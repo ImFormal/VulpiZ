@@ -1,0 +1,31 @@
+:root{
+  --bg-primary: #1D0F3D;
+  --bg-second: #5B1684;
+  --ft-primary: #1D0F3D;
+  --ft-second: #4D28A3;
+  --orange: #E16A2A;
+}
+
+html,body{
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(var(--bg-primary), var(--bg-second));
+  font-family: 'Rubik', sans-serif;
+  color:white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:15px;
+}
