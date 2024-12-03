@@ -1,3 +1,7 @@
+img{
+  transition: transform 0.3s ease;
+}
+
 .content > .accroche{
   font-size:24px;
   font-weight:600;
@@ -6,7 +10,8 @@
 .content > .formulaire{
   background-color: var(--orange);
   border-radius: 30px;
-  min-width: 500px;
+  min-width: 330px;
+  width: 500px;
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 10px rgba(0, 0, 0, 0.5), inset 5px 5px 20px rgba(255, 255, 255, 0.2), inset -5px -5px 15px rgba(0, 0, 0, 0.75);
@@ -18,4 +23,42 @@
   font-weight:600;
   color:white;
   text-decoration: underline;
+}
+
+/*Tablette*/
+@media (max-width: 768px){
+  img{
+    transform: scale(0.8);
+  }
+
+  .content > .accroche{
+    font-size:20px;
+  }
+
+  .content > .formulaire{
+    width: 420px;
+  }
+  
+  .content > .inscription{
+    font-size:20px;
+  }
+}
+  
+/*Mobile*/
+@media (max-width: 480px){
+  img{
+    transform: scale(0.8);
+  }
+
+  .content > .accroche{
+    font-size:16px;
+  }
+
+  .content > .formulaire{
+    width: 330px;
+  }
+  
+  .content > .inscription{
+    font-size:16px;
+  }
 }

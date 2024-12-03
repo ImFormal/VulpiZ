@@ -12,7 +12,7 @@
   <body>
     <div class="content">
       <div class="logo">
-        <img src="../Ressources/Logo/logo.svg">
+        <img src="../Ressources/Logo/logo.svg" alt="logo_VulpiZ">
       </div>
       <p class="accroche">
         Pour accéder à VulpiZ, connectez-vous !

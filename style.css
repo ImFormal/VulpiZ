@@ -6,7 +6,7 @@
   --orange: #E16A2A;
 }
 
-html,body{
+body{
   min-height: 100vh;
   height: auto;
   margin: 0;
@@ -15,10 +15,13 @@ html,body{
   background: linear-gradient(var(--bg-primary), var(--bg-second));
   font-family: 'Rubik', sans-serif;
   color:white;
+  overflow-x: 0;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
