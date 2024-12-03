@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../Modèles/Footer/footer.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/Modèles/Footer/footer.css">
 <?php
 session_start();
 

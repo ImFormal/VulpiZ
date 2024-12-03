@@ -46,6 +46,7 @@ flex: 1;
     height: auto;
     text-align: center; 
     padding: 15px;
+    width: 100%;
   }
   
   footer nav{
