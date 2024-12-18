@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+const pageTitle = "Accueil | VulpiZ";
+---
+
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /connexion.php');
+    exit();
+}
+?>
+
+<Layout pageTitle={pageTitle}>
+	<div class = "content">
+		<h1>Bienvenue sur VulpiZ</h1>
+		<p>Vous êtes connecté en tant qu'utilisateur.</p>
+	</div>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Profil from '../components/Profil.astro';
+---
+
+<header>
+    <a href="/"><img src="/logo.svg" alt="Logo VulpiZ" ></a>
+    <Navigation />
+    <Profil />
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 2rem;
+        height:160px;
+    }
+    a{
+        width:20%;
+    }
+    img{
+        width:100%;
+    }
+</style>

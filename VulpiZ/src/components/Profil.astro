@@ -1,0 +1,72 @@
+---
+const currency = 300; 
+const level = 12;
+const xp = 512;
+const maxXp = 1000;
+const profileImageUrl = "/fennec.png";
+const profileUrl = "/profil";
+---
+
+<div class="profile-container">
+    <div class="profile-info">
+        <div class="currency">
+            <span class="currency-amount">Monnaie : {currency.toLocaleString()} credits</span>
+        </div>
+        <div class="level-progress">
+            <div class="level-text">Level {level} ({xp.toLocaleString()} / {maxXp.toLocaleString()} xp)</div>
+                <div class="progress-bar">
+                    <div class="progress" style={`width: ${(xp / maxXp) * 100}%;`}></div>
+                </div>
+        </div>
+    </div>
+    <a href={profileUrl} class="profile-image-link">
+        <img src={profileImageUrl} alt="Photo de profil" class="profile-image" />
+      </a>
+</div>
+
+<style>
+    .profile-container {
+        display: flex;
+        align-items: center;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        gap:13px;
+    }
+
+    .profile-image {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        gap:7px;
+    }
+
+    .level-progress {
+        display: flex;
+        flex-direction: column;
+        gap:5px;
+    }
+
+    .currency-amount, .level-text {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+    }
+
+    .progress-bar {
+        width: auto;
+        height: 0.5rem;
+        background-color: #4B3D5D;
+        border-radius: 30px;
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        background-color: var(--orange);
+    }
+</style>
