@@ -1,0 +1,3 @@
+<Files *.astro>
+  SetHandler astro-file
+</Files>

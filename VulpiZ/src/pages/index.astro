@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Tableau from "../components/Tableau.astro";
 const pageTitle = "Accueil | VulpiZ";
 ---
 
@@ -14,7 +15,16 @@ if (!isset($_SESSION['user_id'])) {
 
 <Layout pageTitle={pageTitle}>
 	<div class = "content">
-		<h1>Bienvenue sur VulpiZ</h1>
-		<p>Vous êtes connecté en tant qu'utilisateur.</p>
+		<Tableau />
+		<div>
+			<div class="Mode">
+				<fleche>
+				<h1>Solo</h1>
+				<fleche>
+			</div>
+			<bouton jouer>
+			<bouton proposer question>
+		</div>
+		<Tableau />
 	</div>
 </Layout>
