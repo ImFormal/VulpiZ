@@ -1,12 +1,20 @@
 ---
 const currentUrl = Astro.url.pathname;
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if(link.getAttribute('href') === currentUrl) {
+      link.classList.add('active');
+    }
+  });
+});
 ---
 
 <div class="nav-links">
-  <a href="/quetes" class:list={['nav-link', { 'active': currentUrl === '/quetes' }]}>Quêtes</a>
-  <a href="/classements" class:list={['nav-link', { 'active': currentUrl === '/classements' }]}>Classement</a>
-  <a href="/boutique" class:list={['nav-link', { 'active': currentUrl === '/boutique' }]}>Boutique</a>
-  <a href="/faq" class:list={['nav-link', { 'active': currentUrl === '/faq' }]}>FAQ</a>
+  <a href="/quetes" class="nav-link">Quêtes</a>
+  <a href="/classements" class="nav-link">Classement</a>
+  <a href="/boutique" class="nav-link">Boutique</a>
+  <a href="/faq" class="nav-link">FAQ</a>
 </div>
 
 <style>

@@ -1,10 +1,11 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Profil from '../components/Profil.astro';
+import logo from '../assets/logo.svg'
 ---
 
 <header>
-    <a href="/"><img src="/logo.svg" alt="Logo VulpiZ" ></a>
+    <a href="/"><img src={logo.src} alt="Logo VulpiZ"></a>
     <Navigation />
     <Profil />
 </header>

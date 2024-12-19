@@ -3,7 +3,7 @@ const currency = 300;
 const level = 12;
 const xp = 512;
 const maxXp = 1000;
-const profileImageUrl = "/fennec.png";
+import profileImageUrl from '../assets/fennec.png';
 const profileUrl = "/pageProfil";
 ---
 
@@ -20,7 +20,7 @@ const profileUrl = "/pageProfil";
         </div>
     </div>
     <a href={profileUrl} class="profile-image-link">
-        <img src={profileImageUrl} alt="Photo de profil" class="profile-image" />
+        <img src={profileImageUrl.src} alt="Photo de profil" class="profile-image" />
       </a>
 </div>
 
