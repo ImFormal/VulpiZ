@@ -1,13 +1,4 @@
 ---
-const currentUrl = Astro.url.pathname;
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    if(link.getAttribute('href') === currentUrl) {
-      link.classList.add('active');
-    }
-  });
-});
 ---
 
 <div class="nav-links">
@@ -16,6 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   <a href="/boutique" class="nav-link">Boutique</a>
   <a href="/faq" class="nav-link">FAQ</a>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentUrl = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.getAttribute('href') === currentUrl) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
 
 <style>
   .nav-links {
