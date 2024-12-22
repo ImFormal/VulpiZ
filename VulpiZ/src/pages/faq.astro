@@ -1,20 +1,250 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import '../styles/faq.css';
 const pageTitle = "FAQ | VulpiZ";
 ---
 
-<?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /connexion.php');
-    exit();
-}
-?>
-
 <Layout pageTitle={pageTitle}>
 	<div class = "content">
-		<h1>Bienvenue sur la FAQ</h1>
-		<p>Vous êtes connecté en tant qu'utilisateur.</p>
+		<h1 class="title">FAQ</h1>
+		<div class="separator-title"></div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Pourquoi le nom VulpiZ ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					VulpiZ vient de la contraction des mots Vulpes et Quiz, réunissant les deux univers qui caractérisent le mieux ce site.
+					Vulpes est la grande famille des renards, la mascotte de ce site et Quiz rappelle la thématique de ce site qui est avant tout un site de quiz.
+					Le renard a été choisi tout d'abord par le fondateur de VulpiZ car c'est son animal préféré mais aussi car le renard est un animal malin, rusé, intelligent qui colle bien avec l'univers du quiz.
+				</p>
+			</div>
+			<div class ="separator"></div>
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment fonctionne le mode Solo ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Dans le mode Solo, les utilisateurs répondent à des questions en rafale chronométrées. 
+					Vous avez 3 vies à disposition pour chaque question : une vie est perdue pour chaque mauvaise réponse.
+				</p>
+			</div>
+			<div class ="separator"></div>
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Qu'est-ce que le mode aventure ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Le mode Aventure propose des niveaux thématiques successifs à compléter. 
+					Chaque niveau réussi permet de gagner des récompenses telles que des cosmétiques, des points d'expérience, et le déblocage du niveau suivant.
+				</p>
+			</div>
+			<div class ="separator"></div>
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>En quoi consiste le mode Révision ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Dans ce mode, les utilisateurs peuvent travailler sur leurs faiblesses en répondant à des quiz en fonction des matières et niveaux scolaires sélectionnés. 
+					Vous avez à disposition un onglet "Statistiques" qui vous permet de consulter vos points faibles et accéder à des recommendations de cours à suivre pour vous améliorer.
+					En plus des quiz, vous avez accès à une page vous proposant des cours dans toutes les matières et niveaux possibles afin d'apprendre ou réviser vos cours.
+				</p>
+			</div>
+			<div class ="separator"></div>
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment signaler une question incorrecte ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Cliquez sur le drapeau en haut à droite de la question. 
+					Une popup s'ouvrira pour indiquer le type de problème et un message d'explication. 
+					Votre signalement sera transmis aux administrateurs afin de vérifier votre signalement.
+					Si votre signalement s'avère exacte une récompense vous sera attribué. En revanche, tout abus se verra être sanctionné.
+				</p>
+			</div>
+			<div class ="separator"></div>
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment puis-je modifier mon profil ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Vous pouvez accéder à votre profil en cliquant sur votre avatar, 
+					accédez à votre profil pour changer vos informations, 
+					personnaliser votre avatar et titre, 
+					consulter vos statistiques, 
+					vous déconnecter ou supprimer votre compte.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment acheter des cosmétiques ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Les cosmétiques peuvent être achetés dans la boutique avec la monnaie virtuelle du jeu 
+					mais aussi en complétant des quêtes et en progressant de niveau.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment obtenir de la monnaie ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					La monnaie est pour le moment obtenable seulement en réalisant des quêtes, 
+					en passant au niveau supérieur, 
+					en finissant un niveau dans le mode Aventure, 
+					en proposant de nouvelles questions 
+					ou en signalant des bugs ou questions incorrectes.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment gagner de l'expérience ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					L'expérience se gagne en répondant correctement à des questions, 
+					en finissant un niveau dans le mode Aventure 
+					ou en réalisant des quêtes. 
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>A quel intervalle les classements sont-ils actualisés ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Si vous ne voyez pas votre score ou votre placement actualisés sur un classement, ne vous inquiétez ! 
+					Les classements sont actualisés toutes les 30 minutes.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Les quêtes sont changées à quel intervalle ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Cela dépend des quêtes, pour les quêtes globales, celles-ci resteront toujours.
+					Pour ce qui est des quêtes solo, aventure et révision, celles-ci seront actualisées toutes les semaines. 
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment contacter les administrateurs ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Vous pouvez poser vos questions en utilisant le formulaire de <a href="/contact" style="text-decoration: underline; font-weight: bold; color: var(--orange);">contact</a>. 
+					Une réponse vous sera envoyée par mail.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="faq">
+			<div class="question">
+				<h2>Comment signaler un bug ?</h2>
+				<svg width="15" height="10" viewBox="0 0 42 25">
+					<path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" />
+				</svg>
+			</div>
+
+			<div class="answer">
+				<p>
+					Pour signaler tout type de bug nous vous invitons à nous contacter via le formulaire de <a href="/contact" style="text-decoration: underline; font-weight: bold; color: var(--orange);">contact</a>.
+					Nous nous réservons le droit de récompenser les utilisateurs qui aideront au signalement de bug.
+				</p>
+			</div>
+			<div class ="separator"></div>	
+		</div>
+
+		<div class="contact">
+			<p>Vous vous posez une question qui n'est pas présente dans la FAQ ?<br>
+				Écrivez-nous sur notre page contact ! Nous vous répondrons le plus rapidement possible !</p>
+			<a href="/contact" class="btn-contact">Contactez-nous !</a>
+		</div>
 	</div>
 </Layout>

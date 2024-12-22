@@ -4,18 +4,30 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 ---
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /connexion.php');
+    exit();
+}
+?>
+
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-	<meta name="description" content="Découvrez VulpiZ, votre site de quiz innovant mélant culture, fun et renard !">
+  	<meta name="description" content="Découvrez VulpiZ, votre site de quiz innovant mélant culture, fun et renard !">
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
   <body>
     <Header />
-    <slot />
+    <div id = "page-content">
+      <slot />
+    </div>
     <Footer />
+    <script src="../js/navigation.js"></script>
   </body>
 </html>

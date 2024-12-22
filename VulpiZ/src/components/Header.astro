@@ -5,23 +5,168 @@ import logo from '../assets/logo.svg'
 ---
 
 <header>
-    <a href="/"><img src={logo.src} alt="Logo VulpiZ"></a>
-    <Navigation />
-    <Profil />
+    <div class="mobile-header">
+        <a href="/" class="logo-link"><img src={logo.src} alt="Logo VulpiZ"></a>
+        <Profil />
+        <div class="nav-container">
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-wrapper" id="navWrapper">
+                <Navigation />
+            </div>
+        </div>
+    </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const navWrapper = document.getElementById('navWrapper');
+        const navContainer = document.querySelector('.nav-container');
+
+        if (menuToggle && navWrapper && navContainer) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navWrapper.classList.toggle('active');
+                navContainer.classList.toggle('active');
+            });
+        }
+    });
+</script>
 
 <style>
     header {
+        padding: 2rem;
+        height: auto;
+    }
+
+    .mobile-header {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 2rem;
         align-items: center;
-        padding: 2rem 2rem;
-        height:160px;
     }
-    a{
-        width:20%;
+
+    .logo-link {
+        width: 50%;
+        margin: 0 auto;
     }
-    img{
-        width:100%;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0 auto;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    .bar {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        transition: 0.3s;
+        position: absolute;
+        left: 5px;
+        border-radius: 50px;
+    }
+
+    .bar:nth-child(1) { top: 12px; }
+    .bar:nth-child(2) { top: 19px; }
+    .bar:nth-child(3) { top: 26px; }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        top: 19px;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 19px;
+    }
+
+    .nav-wrapper {
+        display: none;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .nav-wrapper.active {
+        display: block;
+    }
+
+    @media (max-width: 1024px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .nav-container {
+            background-color: var(--orange);
+            padding: 1rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-container.active {
+            background-color: var(--bg-primary);
+        }
+    }
+
+    @media (min-width: 1025px) {
+        header {
+            height: 160px;
+        }
+
+        .mobile-header {
+            flex-direction: row;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo-link {
+            width: 20%;
+            min-width: 120px;
+            order: 1; 
+        }
+
+        .nav-container {
+            order: 2;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        :global(.profile-container) {
+            order: 3;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-wrapper {
+            display: block !important;
+            margin-top: 0;
+        }
     }
 </style>

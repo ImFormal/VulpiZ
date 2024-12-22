@@ -69,4 +69,27 @@ const profileUrl = "/pageProfil";
         height: 100%;
         background-color: var(--orange);
     }
+
+    @media (max-width: 1024px) {
+        .profile-container {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 2rem 0;
+            width: 50%;
+        }
+
+        .profile-info {
+            align-items: center;
+        }
+
+        .currency-amount,
+        .level-text {
+            font-size: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
 </style>

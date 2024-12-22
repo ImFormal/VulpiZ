@@ -1,13 +1,10 @@
 ---
-/*const userSession = await fetch('/session.php').then((res) => res.json());
-const isUserLoggedIn = userSession?.isLoggedIn || false;*/
 ---
 <footer>
   <div class="spacer"></div>
   <nav>
     {true && <a href="/contact">Contact</a>}
     <a href="/mentionsLegales">Mentions légales</a>
-    <a href="/cgu">CGU</a>
     <a href="/politiqueConfidentialite">Politique de confidentialité</a>
   </nav>
   <p>&copy; 2024 VulpiZ. Tous droits réservés.</p>
@@ -15,6 +12,7 @@ const isUserLoggedIn = userSession?.isLoggedIn || false;*/
 
 <style>
     footer{
+        margin-top: 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;

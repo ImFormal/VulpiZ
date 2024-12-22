@@ -46,4 +46,16 @@
   .nav-link.active {
     background-color: var(--ft-second); 
   }
+
+  @media (max-width: 1024px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        min-width: 0;
+    }
+  }
 </style>
