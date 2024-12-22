@@ -1,20 +1,104 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import '../styles/politiqueConfidentialite.css';
+
 const pageTitle = "Politique de Confidentialité | VulpiZ";
+const nomSite = "VulpiZ";
+const urlSite = "https://vulpiz.fr";
+const mailSite = "vulpiz-contact@gmail.com";
 ---
-
-<?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /connexion.php');
-    exit();
-}
-?>
 
 <Layout pageTitle={pageTitle}>
 	<div class = "content">
-		<h1>Bienvenue sur la politique de confidentialité</h1>
-		<p>Vous êtes connecté en tant qu'utilisateur.</p>
+		<h1 class="title">Politique de Confidentialité</h1>
+		<div class="separator-title"></div>
+		<div class="politique">
+			<div class="element">
+				<h2>Qui sommes-nous ?</h2>
+				<p>
+					Propriétaire : {nomSite}<br>
+					Adresse du site : <a href="{urlSite}" style="text-decoration: none; color: var(--orange);">{urlSite}</a><br>
+					Responsable de publication : {nomSite}<br>
+					Responsable technique : {nomSite}<br>
+					Hébergeur : OVH<br>
+					Contact : <a href="mailto:{mailSite}" style="text-decoration: none; color: var(--orange);">{mailSite}</a>
+				</p>
+			</div>
+			<div class="element">
+				<h2>Utilisation des données personnelles collectées</h2>
+				<h3>Signalement et Suggestion</h3>
+				<p>
+					Quand vous laissez un signalement ou une suggestion sur notre site web, les données inscrites dans le formulaire, mais aussi votre adresse IP et l'agent utilisateur de votre navigateur sont collectés pour nous aider à la détection des actes abusifs. Après validation de votre signalement ou suggestion, votre pseudo sera visible publiquement à coté de la question suggérée et des récompenses pourront vous être attribué.
+				</p>
+				<h3>Formulaires de contact</h3>
+				<p>
+					Les objectifs de ces traitements de données sont de permettre aux prospects de nous envoyer des demandes de contact par mail à notre adresse <a href="{mailSite}" style="text-decoration: none; color: var(--orange);">{mailSite}</a>. Nous demandons une adresse email afin d'être en capacité de recontacter la personne pour la relancer quant à sa demande d'information. Le formulaire est situé sur la page de <a href="/contact" style="text-decoration: none; color: var(--orange);">contact</a>.
+				</p>
+				<h3>Cookies</h3>
+				<p>
+					Si vous voulez accéder à notre site, il vous sera proposé d'enregistrer votre pseudo, adresse de messagerie et site web dans des cookies. C'est uniquement pour votre confort afin de ne pas avoir à saisir ces informations si vous souhaitez vous connecter plus tard. Ces cookies expirent au bout d'un an. Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement à la fermeture de votre navigateur. Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos informations de connexion et vos préférences d'écran. La durée de vie d'un cookie de connexion est de deux jours, celle d'un cookie d'option d'écran est d'un an. Si vous cochez « Se souvenir de moi », votre cookie de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de connexion sera effacé. En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur. Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l'ID de la publication que vous venez de modifier. Il expire au bout d'un jour.
+				</p>
+			</div>
+			<div class="element">
+				<h2>Contenu embarqué depuis d'autres sites</h2>
+				<p>
+					Les articles de ce site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles…). Le contenu intégré depuis d'autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site. Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d'un compte connecté sur leur site web.
+				</p>
+			</div>
+			<div class="element">
+				<h2>Statistiques et mesures d'audience</h2>
+				<p>
+					Ce site web utilise Google Analytics pour collecter des données et des statistiques sur le trafic de <a href="{urlSite}" style="text-decoration: none; color: var(--orange);">{urlSite}</a>. Vous pouvez lire la politique de confidentialité de Google sur ces pages : <a href="https://policies.google.com/privacy?hl=fr_FR" style="text-decoration: none; color: var(--orange);">https://policies.google.com/privacy?hl=fr_FR</a>.
+				</p>
+			</div>
+			<div class="element">
+				<h2>Utilisation et transmission de vos données personnelles</h2>
+				<h3>Durée de stockage de vos données</h3>
+				<p>
+					Si vous laissez un signalement, suggestion ou demande de contact, ceux-ci et leurs métadonnées sont conservés indéfiniment. Cela permet de reconnaître et approuver automatiquement ces éléments suivants au lieu de les laisser dans la file de modération. Pour les utilisateurs et utilisatrices qui s'enregistrent sur notre site, nous stockons également les données personnelles indiquées dans leur profil. Tous les utilisateurs et utilisatrices peuvent voir, modifier ou supprimer leurs informations personnelles à tout moment. Les gestionnaires du site peuvent aussi voir et modifier ces informations.
+				</p>
+				<h3>Les droits que vous avez sur vos données</h3>
+				<p>
+					Si vous avez un compte ou si vous avez fait des signalements, suggestions ou demandes de contact, vous pouvez demander à recevoir un fichier contenant toutes les données personnelles que nous possédons à votre sujet, incluant celles que vous nous avez fournies. Vous pouvez également demander la suppression des données personnelles vous concernant. Cela ne prend pas en compte les données stockées à des fins administratives, légales ou pour des raisons de sécurité.
+				</p>
+				<h3>Transmission de vos données personnelles</h3>
+				<p>
+					Les signalements, suggestions et demandes de contact des utilisateurs peuvent sont étudiés par notre équipe. Nous nous réservons le droit de sanctionner tout acte abusif et inaproprié. 
+				</p>
+				<h3>Informations de contact</h3>
+				<p>
+					VulpiZ - <a href="mailto:{mailSite}" style="text-decoration: none; color: var(--orange);">{mailSite}</a>
+				</p>
+			</div>
+			<div class="element">
+				<h2>Informations supplémentaires</h2>
+				<h3>Comment nous protégeons vos données</h3>
+				<p>
+					Nous mettons un maximum de choses en place pour maintenir un niveau de sécurité élevé. Voici quelques mesures de sécurité que nous prenons. 
+				</p>
+				<h3>Contrôle d'accès des utilisateurs</h3>
+				<p>
+					Activation des comptes utilisateurs par envoie de mail de confirmation. Accès restreint par adresse IP à certaines de nos bases de données. Utilisation de mots de passe difficile à déchiffrer.
+				</p>
+				<h3>Mesures de protection des logiciels</h3>
+				<p>
+					Mises à jour automatiques sur l'ensemble des systèmes d'exploitation et logiciels que nous utilisons.
+				</p>
+				<h3>Chiffrement des données</h3>
+				<p>
+					Certificat SSL (https).
+				</p>
+				<h3>Contrôle des sous-traitants</h3>
+				<p>
+					Pour chaque sous-traitant : vérification de la politique de confidentialité et des mesures mises en place quant au RGPD, Analyse de l'emplacement des serveurs : nous privilégions les sous-traitants stockant les données dans des datacenters en France pour davantage de sécurité.
+				</p>
+			</div>
+			<div class="element">
+				<h2>Procédures mises en œuvre en cas de fuite de données</h2>
+				<p>
+					Constatation de la fuite via plusieurs systèmes internes de notification. Envoi d'un email dans les 72h suivant la constatation à la ou les personne(s) concernée(s) pour les informer de la fuite et leur transmettre un maximum d'informations afin qu'ils évaluent le risque réel pour leurs droits et libertés. Analyse approfondie de la faille de sécurité pour la corriger et prévenir d'éventuelles futures failles similaires.
+				</p>
+			</div>
+		</div>
 	</div>
 </Layout>

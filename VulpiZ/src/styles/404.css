@@ -1,0 +1,67 @@
+.content > .titre{
+    margin-top: 50px;
+    font-size:24px;
+    font-weight:600;
+}
+
+.content > .accroche{
+    font-size:20px;
+    font-weight:400;
+    color:white;
+}
+
+img{
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    margin:0;
+}
+
+.content > .redirection{
+    font-size:20px;
+    font-weight:400;
+    margin:0;
+}
+
+a:-webkit-any-link {
+    color: white;
+}
+
+/*Tablette*/
+@media (max-width: 768px){
+	.content > .titre{
+        margin-top: 0px;
+        font-size:20px;
+    }
+
+    img{
+        transform: scale(0.8);
+    }
+    
+    .content > .accroche{
+        font-size:18px;
+    }
+    
+    .content > .redirection{
+        font-size:18px;
+    }
+}
+    
+/*Mobile*/
+@media (max-width: 480px){
+    .content > .titre{
+        margin-top: 20px;
+        font-size:18px;
+    }
+
+    img{
+        transform: scale(0.5);
+    }
+    
+    .content > .accroche{
+        font-size:16px;
+    }
+    
+    .content > .redirection{
+        font-size:16px;
+    }
+}

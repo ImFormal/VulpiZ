@@ -1,0 +1,147 @@
+header {
+    padding: 2rem;
+    height: auto;
+}
+
+.mobile-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.logo-link {
+    width: 50%;
+    margin: 0 auto;
+    order: 1; /* Le logo en premier */
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+    position: absolute;
+    left: 5px;
+    border-radius: 50px;
+}
+
+.bar:nth-child(1) { top: 12px; }
+.bar:nth-child(2) { top: 19px; }
+.bar:nth-child(3) { top: 26px; }
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 19px;
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 19px;
+}
+
+.nav-wrapper {
+    display: none;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.nav-wrapper.active {
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .mobile-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-link {
+        width: 50%;
+        order: 1; /* Le logo en premier */
+    }
+
+    .profile-container {
+        order: 2; /* Le profil en deuxième */
+    }
+
+    .nav-container {
+        order: 3; /* La navigation en troisième */
+        background-color: var(--orange);
+        padding: 1rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-container.active {
+        background-color: var(--bg-primary);
+    }
+}
+
+@media (min-width: 1025px) {
+    header {
+        height: 160px;
+    }
+
+    .mobile-header {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .logo-link {
+        width: 20%;
+        min-width: 120px;
+        order: 1; /* Le logo en premier */
+    }
+
+    .nav-container {
+        order: 2; /* La navigation en deuxième */
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-container {
+        order: 3; /* Le profil en troisième */
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-wrapper {
+        display: block !important;
+        margin-top: 0;
+    }
+}
