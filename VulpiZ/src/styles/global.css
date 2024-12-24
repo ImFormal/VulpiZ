@@ -47,3 +47,11 @@ html, body{
     background-color: var(--orange);
     margin-bottom: 5rem;
 }
+
+.separator-title2{
+    width:150px;
+    height:3px;
+    border-radius: 50px;
+    background-color: var(--bg-second);
+    margin-bottom: 5rem;
+}
