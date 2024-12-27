@@ -1,32 +1,14 @@
 ---
-import { app } from "../firebase/server";
-import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
 import Tableau from "../components/Tableau.astro";
-
-const auth = getAuth(app);
-
-if (!Astro.cookies.has("__session")) {
-  return Astro.redirect("/signin");
-}
-const sessionCookie = Astro.cookies.get("__session").value;
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-const user = await auth.getUser(decodedCookie.uid);
-
-if (!user) {
-  return Astro.redirect("/signin");
-}
 
 const pageTitle = "Accueil | VulpiZ";
 ---
 
 <Layout pageTitle={pageTitle}>
 	<div class = "content">
+		<a href="#" id="logout">Déconnexion</a>
 		<!--<h1>Bienvenue {user.displayName}</h1>-->
-  		<p>Nous sommes heureux de te voir ici</p>
-		<form action="/api/auth/signout">
-			<button type="submit">Déconnexion</button>
-		</form>
 		<!--<Tableau />
 		<div>
 			<div class="Mode">
@@ -40,4 +22,6 @@ const pageTitle = "Accueil | VulpiZ";
 		<Tableau />
 	-->
 	</div>
+	<p>Email: <span id="userEmail"></span></p>
+<p>UID: <span id="userId"></span></p>
 </Layout>

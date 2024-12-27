@@ -18,7 +18,7 @@ img{
     padding: 50px;
 }
 
-.content > .inscription{
+.content > .connexion{
     margin-top:20px;
     font-size:24px;
     font-weight:600;
@@ -40,7 +40,7 @@ img{
         width: 420px;
     }
     
-    .content > .inscription{
+    .content > .connexion{
         font-size:20px;
     }
 }
@@ -59,7 +59,7 @@ img{
         width: 330px;
     }
     
-    .content > .inscription{
+    .content > .connexion{
         font-size:16px;
     }
 }

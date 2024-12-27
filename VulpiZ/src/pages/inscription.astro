@@ -1,41 +1,44 @@
 ---
 import Layout from '../layouts/LayoutWithoutComponents.astro';
+import logo from '../assets/logo.svg';
+import '../styles/inscription.css';
 
 const pageTitle = "Inscription | VulpiZ";
 ---
 <Layout pageTitle={pageTitle}>
     <div class="content">
-        <img src="/logo.svg" alt="logo_VulpiZ" />
+        <img src={logo.src} alt="logo_VulpiZ" />
       
         <p class="accroche">Pour accéder à VulpiZ, inscrivez-vous !</p>
       
         <div class="formulaire">
-            <form action="connexionbase.php" method="post">
+            <form>
                 <p>S'inscrire</p>
                 <hr />
                 <div class="Box">
                     <span>Pseudo</span>
                     <div class="box">
-                        <input type="text" name="pseudo" id="pseudo" pattern="[a-z0-9A-Z._-]{3,32}" required>
+                        <input type="text" id="pseudo" pattern="[a-z0-9A-Z._-]{3,32}" required>
                     </div>
                     <span>Email</span>
                     <div class="box">
-                        <input type="text" name="email" id="email" placeholder="adresse@gmail.com" pattern="[a-z0-9A-Z._-]+@[a-z.]+\.[a-z]{2,4}" required />
+                        <input type="text" id="email" pattern="[a-z0-9A-Z._-]+@[a-z.]+\.[a-z]{2,4}" required />
                     </div>
                     <br />
                     <span>Mot de Passe</span>
                     <div class="box">
-                        <input type="password" name="password" id="password" pattern="[a-z0-9A-Z._-!]{8,}" required />
+                        <input type="password" id="password" pattern="[a-z0-9A-Z._-!]{8,}" required />
                     </div>
                     <br />
                     <div class="box">
-                        <input type="submit" value="S'inscrire" />
+                        <input type="submit" id="submit" value="S'inscrire" />
                     </div>
-                    <input type="checkbox" name="droit" id="droit" required><label for="droit">En cliquant sur S'inscrire, vous acceptez les <span>Conditions d'utilisation</span> de VulpiZ et vous confirmez avoir lu nos <span>Mention Légales</span></label>
+                    <input type="checkbox" id="droit" required><label for="droit">En cliquant sur S'inscrire, vous acceptez les <span>Conditions d'utilisation</span> de VulpiZ et vous confirmez avoir lu nos <span>Mention Légales</span></label>
                 </div>
             </form>
         </div>
       
-        <a href="connexion" class="inscription">Déjà un compte ? Connectez-vous !</a>
+        <a href="connexion" class="connexion">Déjà un compte ? Connectez-vous !</a>
     </div>
+    <script src="../js/register.js"></script>
 </Layout>
