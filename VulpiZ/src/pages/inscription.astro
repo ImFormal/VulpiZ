@@ -16,6 +16,7 @@ const pageTitle = "Inscription | VulpiZ";
                 <p>S'inscrire</p>
                 <hr />
                 <div class="Box">
+                    <div id="message" class="message"></div>
                     <span>Pseudo</span>
                     <div class="box">
                         <input type="text" id="pseudo" pattern="[a-z0-9A-Z._-]{3,32}" required>
@@ -28,6 +29,10 @@ const pageTitle = "Inscription | VulpiZ";
                     <span>Mot de Passe</span>
                     <div class="box">
                         <input type="password" id="password" pattern="[a-z0-9A-Z._-!]{8,}" required />
+                    </div>
+                    <span>Mot de Passe (Confirmation)</span>
+                    <div class="box">
+                        <input type="password" id="password-confirmation" pattern="[a-z0-9A-Z._-!]{8,}" required />
                     </div>
                     <br />
                     <div class="box">
