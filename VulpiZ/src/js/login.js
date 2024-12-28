@@ -15,22 +15,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const submit = document.getElementById('submit');
-submit.addEventListener("click", function(e){
-    e.preventDefault();
+export function initializeLogin() {
+    console.log("Initialisation de la page de connexion");
+    const form = document.querySelector('form');
+    console.log("Formulaire trouvé:", form);
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            console.log("Soumission du formulaire de connexion");
+            e.preventDefault();
 
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        const user = userCredential.user;
-        console.log("Connexion au compte..")
-        window.location.href = "/";
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-    })
-})
+            console.log("Tentative de connexion...");
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log("Connexion réussie");
+                window.location.href = "/";
+            } catch (error) {
+                console.error("Erreur lors de la connexion:", error);
+                alert(error.message);
+            }
+        });
+    } else {
+        console.error("Formulaire de connexion non trouvé");
+    }
+}

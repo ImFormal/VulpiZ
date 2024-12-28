@@ -1,4 +1,3 @@
-// src/components/AuthManager.js
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -16,31 +15,34 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Gestion de l'authentification
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        if (document.getElementById('userEmail')) {
-            document.getElementById('userEmail').textContent = user.email;
-            document.getElementById('userId').textContent = user.uid;
+export function initializeAuthManager() {
+    console.log("Initialisation de l'AuthManager");
+    
+    // Gestion de l'authentification
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            if (document.getElementById('userEmail')) {
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('userId').textContent = user.uid;
+            }
+        } else {
+            window.location.href = '/connexion';
         }
-    } else {
-        window.location.href = '/connexion';
-    }
-});
+    });
 
-// Gestion de la déconnexion
-document.addEventListener('DOMContentLoaded', () => {
+    // Gestion de la déconnexion
     const logoutLink = document.getElementById('logout');
     if (logoutLink) {
         logoutLink.addEventListener('click', async (e) => {
             e.preventDefault();
             try {
                 await signOut(auth);
-                localStorage.clear(); // Nettoie le localStorage
-                sessionStorage.clear(); // Nettoie le sessionStorage
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = '/connexion';
             } catch (error) {
                 console.error("Erreur lors de la déconnexion:", error);
             }
         });
     }
-});
+}

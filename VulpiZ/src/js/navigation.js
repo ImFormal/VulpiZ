@@ -1,4 +1,7 @@
 import { initializeFAQ } from './faq.js';
+import { initializeRegister } from './register.js';
+import { initializeLogin } from './login.js';
+import { initializeAuthManager } from './AuthManager.js';
 
 document.addEventListener('click', async (event) => {
     const link = event.target.closest('a[href]');
@@ -6,6 +9,7 @@ document.addEventListener('click', async (event) => {
         event.preventDefault();
 
         const url = link.href;
+        console.log("Navigation vers:", url);
 
         try {
             const response = await fetch(url);
@@ -15,21 +19,20 @@ document.addEventListener('click', async (event) => {
             const parser = new DOMParser();
             const newDocument = parser.parseFromString(html, 'text/html');
 
-            // Met à jour le contenu de la page
+            window.history.pushState({}, '', url);
+
             const newContent = newDocument.querySelector('#page-content');
             if (newContent) {
                 const currentContent = document.querySelector('#page-content');
                 currentContent.innerHTML = newContent.innerHTML;
 
-                // Appelle initializePage après la mise à jour du contenu
-                initializePage();
+                setTimeout(() => {
+                    console.log("Initialisation après navigation vers:", window.location.pathname);
+                    initializePage();
+                }, 0);
             }
 
-            // Met à jour les styles
             updateStyles(newDocument);
-
-            // Met à jour l'URL et remonte en haut de la page
-            window.history.pushState({}, '', url);
             updateActiveLinks();
             window.scrollTo(0, 0);
         } catch (error) {
@@ -40,6 +43,7 @@ document.addEventListener('click', async (event) => {
 
 window.addEventListener('popstate', async () => {
     const url = window.location.href;
+    console.log("Retour vers:", url);
 
     try {
         const response = await fetch(url);
@@ -54,14 +58,13 @@ window.addEventListener('popstate', async () => {
             const currentContent = document.querySelector('#page-content');
             currentContent.innerHTML = newContent.innerHTML;
 
-            // Appelle initializePage après la mise à jour du contenu
-            initializePage();
+            setTimeout(() => {
+                console.log("Initialisation après retour vers:", window.location.pathname);
+                initializePage();
+            }, 0);
         }
 
-        // Met à jour les styles
         updateStyles(newDocument);
-
-        // Met à jour les liens et remonte en haut de la page
         updateActiveLinks();
         window.scrollTo(0, 0);
     } catch (error) {
@@ -98,12 +101,22 @@ function updateActiveLinks() {
 }
 
 function initializePage() {
-    initializeFAQ(); 
-
-    // Ajoute d'autres initialisations spécifiques ici si nécessaire
+    const path = window.location.pathname;
+    console.log("Initialisation de la page:", path);
+    
+    if (path === '/faq') {
+        initializeFAQ();
+    } else if (path === '/inscription') {
+        initializeRegister();
+    } else if (path === '/connexion') {
+        initializeLogin();
+    } else if (path === '/') {
+        initializeAuthManager();
+    }
 }
 
-// Exécute l'initialisation au chargement initial de la page
 document.addEventListener('DOMContentLoaded', () => {
     initializePage();
 });
+
+export { initializePage };
