@@ -1,27 +1,33 @@
 ---
-import profileImageUrl from '../assets/fennec.png';
 import '../styles/profil.css';
 
-const currency = 300; 
-const level = 12;
-const xp = 512;
+// Valeurs par défaut initiales
+const userData = {
+    pseudo_utilisateur: "unknown",
+   monnaie_utilisateur: 0,
+   lvl_utilisateur: 1,
+   xp_utilisateur: 0,
+   avatar_utilisateur: 'default.png'
+};
 const maxXp = 1000;
 const profileUrl = "/pageProfil";
 ---
 
 <div class="profile-container">
     <div class="profile-info">
+        <span>Pseudo : {userData.pseudo_utilisateur}</span>
         <div class="currency">
-            <span class="currency-amount">Monnaie : {currency.toLocaleString()} credits</span>
+            <span class="currency-amount">Monnaie : {userData.monnaie_utilisateur.toLocaleString()} credits</span>
         </div>
         <div class="level-progress">
-            <div class="level-text">Level {level} ({xp.toLocaleString()} / {maxXp.toLocaleString()} xp)</div>
-                <div class="progress-bar">
-                    <div class="progress" style={`width: ${(xp / maxXp) * 100}%;`}></div>
-                </div>
+            <div class="level-text">Level {userData.lvl_utilisateur} ({userData.xp_utilisateur.toLocaleString()} / {maxXp.toLocaleString()} xp)</div>
+            <div class="progress-bar">
+                <div class="progress" style={`width: ${(userData.xp_utilisateur / maxXp) * 100}%;`}></div>
+            </div>
         </div>
     </div>
     <a href={profileUrl} class="profile-image-link">
-        <img src={profileImageUrl.src} alt="Photo de profil" class="profile-image" />
-      </a>
+        <img src={`/avatars/${userData.avatar_utilisateur}`} alt="Photo de profil" class="profile-image" />
+    </a>
 </div>
+<script src="../js/profileData.js"></script>

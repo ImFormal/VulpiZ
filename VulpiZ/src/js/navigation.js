@@ -2,6 +2,7 @@ import { initializeFAQ } from './faq.js';
 import { initializeRegister } from './register.js';
 import { initializeLogin } from './login.js';
 import { initializeAuthManager } from './AuthManager.js';
+import { initializeProfile } from './profileData.js';
 
 document.addEventListener('click', async (event) => {
     const link = event.target.closest('a[href]');
@@ -103,6 +104,7 @@ function initializePage() {
 
     if (path !== '/inscription' && path !== '/connexion') {
         initializeAuthManager();
+        initializeProfile();
     }
     
     if (path === '/faq') {
