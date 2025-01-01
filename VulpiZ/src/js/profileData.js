@@ -4,8 +4,6 @@ export function initializeProfile() {
     const profileContent = document.querySelector('.profile-container');
     if (!profileContent) return;
 
-    console.log("Auth state:", auth.currentUser);
-
     auth.onAuthStateChanged(async (user) => {
         if (!user) {
             console.log("Aucun utilisateur connecté");
@@ -29,6 +27,10 @@ function updateProfileUI(userData) {
     const levelElement = document.querySelector('.level-text');
     const progressBar = document.querySelector('.progress');
     const avatarElement = document.querySelector('.profile-image');
+    const pseudoElement = document.querySelector('.pseudo');
+    const titreElement = document.querySelector('.titre');
+
+    console.log(userData);
 
     if (monnaieElement) {
         monnaieElement.textContent = `Monnaie : ${userData.monnaie_utilisateur.toLocaleString()} credits`;
@@ -41,5 +43,11 @@ function updateProfileUI(userData) {
     }
     if (avatarElement) {
         avatarElement.src = `/avatars/${userData.avatar_utilisateur}`;
+    }
+    if (pseudoElement) {
+        pseudoElement.textContent = `${userData.pseudo_utilisateur.toLocaleString()}`;
+    }
+    if (titreElement) {
+        titreElement.textContent = `${userData.titre_utilisateur.toLocaleString()}`;
     }
 }

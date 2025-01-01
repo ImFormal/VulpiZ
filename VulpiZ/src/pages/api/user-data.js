@@ -6,7 +6,7 @@ export async function GET({ request }) {
 
     try {
         const [rows] = await pool.execute(
-            'SELECT monnaie_utilisateur, lvl_utilisateur, xp_utilisateur FROM utilisateur WHERE id_utilisateur = ?',
+            'SELECT * FROM utilisateur WHERE id_utilisateur = ?',
             [uid]
         );
         

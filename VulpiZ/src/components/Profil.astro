@@ -3,11 +3,12 @@ import '../styles/profil.css';
 
 // Valeurs par défaut initiales
 const userData = {
-    pseudo_utilisateur: "unknown",
-   monnaie_utilisateur: 0,
-   lvl_utilisateur: 1,
-   xp_utilisateur: 0,
-   avatar_utilisateur: 'default.png'
+    pseudo_utilisateur: 'undefined',
+    titre_utilisateur: 'Renardo',
+    monnaie_utilisateur: 0,
+    lvl_utilisateur: 1,
+    xp_utilisateur: 0,
+    avatar_utilisateur: 'default.png'
 };
 const maxXp = 1000;
 const profileUrl = "/pageProfil";
@@ -15,7 +16,10 @@ const profileUrl = "/pageProfil";
 
 <div class="profile-container">
     <div class="profile-info">
-        <span>Pseudo : {userData.pseudo_utilisateur}</span>
+        <div>
+            <span class="titre">[{userData.titre_utilisateur}]</span>
+            <span class="pseudo">{userData.pseudo_utilisateur}</span>
+        </div>
         <div class="currency">
             <span class="currency-amount">Monnaie : {userData.monnaie_utilisateur.toLocaleString()} credits</span>
         </div>
