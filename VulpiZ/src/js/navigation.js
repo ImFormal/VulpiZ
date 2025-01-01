@@ -26,10 +26,9 @@ document.addEventListener('click', async (event) => {
                 const currentContent = document.querySelector('#page-content');
                 currentContent.innerHTML = newContent.innerHTML;
 
-                setTimeout(() => {
-                    console.log("Initialisation après navigation vers:", window.location.pathname);
-                    initializePage();
-                }, 0);
+                console.log("Initialisation après navigation vers:", window.location.pathname);
+                initializePage();
+                
             }
 
             updateStyles(newDocument);
@@ -58,10 +57,8 @@ window.addEventListener('popstate', async () => {
             const currentContent = document.querySelector('#page-content');
             currentContent.innerHTML = newContent.innerHTML;
 
-            setTimeout(() => {
-                console.log("Initialisation après retour vers:", window.location.pathname);
-                initializePage();
-            }, 0);
+            console.log("Initialisation après retour vers:", window.location.pathname);
+            initializePage();
         }
 
         updateStyles(newDocument);
@@ -103,6 +100,10 @@ function updateActiveLinks() {
 function initializePage() {
     const path = window.location.pathname;
     console.log("Initialisation de la page:", path);
+
+    if (path !== '/inscription' && path !== '/connexion') {
+        initializeAuthManager();
+    }
     
     if (path === '/faq') {
         initializeFAQ();
@@ -110,8 +111,6 @@ function initializePage() {
         initializeRegister();
     } else if (path === '/connexion') {
         initializeLogin();
-    } else if (path === '/') {
-        initializeAuthManager();
     }
 }
 
