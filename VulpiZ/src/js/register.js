@@ -1,6 +1,7 @@
 import { auth } from '../firebase/firebaseConfig';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { showError, showSuccess, clearMessage, getFirebaseErrorMessage } from './messages';
+import { showError, showSuccess, clearMessage, getFirebaseErrorMessage, getPasswordErrorMessages } from './messages';
+import { sanitizeInput } from './sanitizeInput';
 
 async function checkPseudoExists(pseudo) {
     const response = await fetch(`/api/check-pseudo?pseudo=${encodeURIComponent(pseudo)}`);
@@ -53,11 +54,20 @@ export function initializeRegister() {
             e.preventDefault();
             e.stopPropagation();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const passwordConfirmation = document.getElementById('password-confirmation').value;
-            const pseudo = document.getElementById('pseudo').value;
-            const droit = document.getElementById('droit').checked;
+            const email = sanitizeInput(document.getElementById('email').value);
+            const password = sanitizeInput(document.getElementById('password').value);
+            const passwordValidation = getPasswordErrorMessages(password);
+            const passwordConfirmation = sanitizeInput(document.getElementById('password-confirmation').value);
+            const pseudo = sanitizeInput(document.getElementById('pseudo').value);
+            const droit = sanitizeInput(document.getElementById('droit').checked);
+
+            console.log({
+                email,
+                password,
+                passwordConfirmation,
+                pseudo,
+                droit
+            });
 
             // Validations
             if (!pseudo || pseudo.length < 3) {
@@ -72,6 +82,11 @@ export function initializeRegister() {
 
             if (!password) {
                 showError('Le mot de passe est requis.');
+                return;
+            }
+
+            if (!passwordValidation.isValid) {
+                showError(passwordValidation.errors);
                 return;
             }
 

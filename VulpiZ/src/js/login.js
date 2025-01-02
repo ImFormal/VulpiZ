@@ -1,6 +1,7 @@
 import { auth } from '../firebase/firebaseConfig.js';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { showError, clearMessage, getFirebaseErrorMessage } from '../js/messages.js';
+import { sanitizeInput } from '../js/sanitizeInput.js';
 
 export function initializeLogin() {
     console.log("Initialisation de la page de connexion");
@@ -14,8 +15,8 @@ export function initializeLogin() {
             e.preventDefault();
             e.stopPropagation();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = sanitizeInput(document.getElementById('email').value);
+            const password = sanitizeInput(document.getElementById('password').value);
 
             if (!email) {
                 showError('L\'adresse email est requise.');

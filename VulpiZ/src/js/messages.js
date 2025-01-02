@@ -1,6 +1,7 @@
 export function showError(message) {
     const errorDiv = document.getElementById('message');
     if (errorDiv) {
+        clearMessage();
         errorDiv.innerHTML = message;
         errorDiv.style.display = 'block';
         errorDiv.classList.add('show-error');
@@ -10,6 +11,7 @@ export function showError(message) {
 export function showSuccess(message) {
     const errorDiv = document.getElementById('message');
     if (errorDiv) {
+        clearMessage();
         errorDiv.innerHTML = message;
         errorDiv.style.display = 'block';
         errorDiv.classList.add('show-success');
@@ -42,7 +44,7 @@ export function getFirebaseErrorMessage(error) {
         case 'auth/operation-not-allowed':
             return 'La création de compte est temporairement désactivée.';
         case 'auth/weak-password':
-            return 'Le mot de passe doit contenir au moins 6 caractères.';
+            return 'Le mot de passe doit contenir au moins 8 caractères.';
         case 'auth/invalid-credential':
             return 'Identifiants incorrects.';
         
@@ -60,3 +62,25 @@ export function getFirebaseErrorMessage(error) {
             return 'Une erreur s\'est produite.';
     }
 }
+
+export function getPasswordErrorMessages(password) {
+    const errors = [];
+ 
+    if (password.length < 8) {
+        errors.push('Le mot de passe doit contenir au moins 8 caractères.');
+    }
+    if (!/[A-Z]/.test(password)) {
+        errors.push('Le mot de passe doit contenir au moins une majuscule.');
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        errors.push('Le mot de passe doit contenir au moins un caractère spécial.');
+    }
+    if (!/\d/.test(password)) {
+        errors.push('Le mot de passe doit contenir au moins un chiffre.');
+    }
+ 
+    return {
+        isValid: errors.length === 0,
+        errors: errors.join('<br>')
+    };
+ }

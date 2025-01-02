@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/LayoutWithoutComponents.astro';
 import logo from '../assets/logo.svg';
-import '../styles/connexion.css';
+import '../styles/formulaire.css';
 
 const pageTitle = "Connexion | VulpiZ";
 ---
@@ -13,23 +13,19 @@ const pageTitle = "Connexion | VulpiZ";
       
         <div class="formulaire">
             <form>
-                <p>Se connecter</p>
-                <hr />
+                <p class="action">Se connecter</p>
                 <div class="Box">
                     <div id="message" class="message"></div>
-                    <span>Email</span>
-                    <div class="box">
-                        <input type="text" id="email" pattern="[a-z0-9A-Z._-]+@[a-z.]+\.[a-z]{2,4}" required />
+                    <div class="informations">
+                        <span class="champs">Email*</span>
+                        <input type="text" id="email" />
                     </div>
-                    <br />
-                    <span>Mot de Passe</span>
-                    <div class="box">
-                        <input type="password" id="password" pattern="[a-z0-9A-Z._-!]{8,}" required />
+                    <div class="informations">
+                        <span class="champs">Mot de Passe*</span>
+                        <input type="password" id="password" />
+                        <a href="#" id="reset-mdp">Mot de passe oublié ?</a>
                     </div>
-                    <br />
-                    <div class="box">
-                        <input type="submit" id="submit" value="Se connecter" />
-                    </div>
+                    <input type="submit" id="submit" value="Se connecter" />
                 </div>
             </form>
         </div>

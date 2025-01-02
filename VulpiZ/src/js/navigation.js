@@ -102,7 +102,7 @@ function initializePage() {
     const path = window.location.pathname;
     console.log("Initialisation de la page:", path);
 
-    if (path !== '/inscription' && path !== '/connexion') {
+    if (path !== '/inscription' && path !== '/connexion' && path !== '/mentionsLegales-v') {
         initializeAuthManager();
         initializeProfile();
     }

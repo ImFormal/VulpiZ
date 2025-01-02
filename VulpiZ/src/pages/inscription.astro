@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/LayoutWithoutComponents.astro';
 import logo from '../assets/logo.svg';
-import '../styles/inscription.css';
+import '../styles/formulaire.css';
 
 const pageTitle = "Inscription | VulpiZ";
 ---
@@ -13,32 +13,33 @@ const pageTitle = "Inscription | VulpiZ";
       
         <div class="formulaire">
             <form>
-                <p>S'inscrire</p>
-                <hr />
+                <p class="action">S'inscrire</p>
                 <div class="Box">
                     <div id="message" class="message"></div>
-                    <span>Pseudo</span>
-                    <div class="box">
-                        <input type="text" id="pseudo" pattern="[a-z0-9A-Z._-]{3,32}" required>
+                    <div class="informations">
+                        <span class="champs">Pseudo*</span>
+                        <input type="text" id="pseudo" />
                     </div>
-                    <span>Email</span>
-                    <div class="box">
-                        <input type="email" id="email" pattern="[a-z0-9A-Z._-]+@[a-z.]+\.[a-z]{2,4}" required />
+                    <div class="informations">
+                        <span class="champs">Email*</span>
+                        <input type="email" id="email" />
                     </div>
-                    <br />
-                    <span>Mot de Passe</span>
-                    <div class="box">
-                        <input type="password" id="password" pattern="[a-z0-9A-Z._-!]{8,}" required />
+                    <div class="informations">
+                        <span class="champs">Mot de Passe*</span>
+                        <input type="password" id="password" />
                     </div>
-                    <span>Mot de Passe (Confirmation)</span>
-                    <div class="box">
-                        <input type="password" id="password-confirmation" pattern="[a-z0-9A-Z._-!]{8,}" required />
+                    <div class="informations">
+                        <span class="champs">Mot de Passe (Confirmation)*</span>
+                        <input type="password" id="password-confirmation" />
                     </div>
-                    <br />
-                    <div class="box">
-                        <input type="button" id="submit" value="S'inscrire" />
+                    
+                    <div class="conditions">
+                        <input type="checkbox" id="droit" required>
+                        <label for="droit">En cliquant sur S'inscrire, vous acceptez les <a href="/mentionsLegales-v">Conditions d'utilisation</a> de VulpiZ et vous confirmez avoir lu nos <a href="/mentionsLegales">Mention Légales</a></label>
                     </div>
-                    <input type="checkbox" id="droit" required><label for="droit">En cliquant sur S'inscrire, vous acceptez les <span>Conditions d'utilisation</span> de VulpiZ et vous confirmez avoir lu nos <span>Mention Légales</span></label>
+
+                    <input type="submit" id="submit" value="S'inscrire" />
+                    
                 </div>
             </form>
         </div>
