@@ -8,7 +8,7 @@ export async function POST({ request }) {
             `INSERT INTO utilisateur (
                 id_utilisateur,
                 pseudo_utilisateur,
-                avatar_utilisateur,  // Stocker l'ID, pas le chemin
+                avatar_utilisateur,
                 titre_utilisateur,
                 xp_utilisateur,
                 lvl_utilisateur,

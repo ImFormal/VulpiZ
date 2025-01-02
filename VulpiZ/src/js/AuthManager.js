@@ -1,11 +1,24 @@
 import { auth } from '../firebase/firebaseConfig.js';
-import { onAuthStateChanged, signOut } from "firebase/auth";
-
+import { onAuthStateChanged, onIdTokenChanged, signOut } from "firebase/auth";
 
 export function initializeAuthManager() {
     console.log("Initialisation de l'AuthManager");
     
-    // Gestion de l'authentification
+    // Écoute les modifications du token (inclut la désactivation/suppression du compte)
+    onIdTokenChanged(auth, async (user) => {
+        if (user) {
+            try {
+                await user.getIdToken(true);
+            } catch (error) {
+                // Si on ne peut pas obtenir le token, le compte a probablement été désactivé/supprimé
+                console.log("Compte désactivé ou supprimé");
+                await signOut(auth);
+                window.location.href = '/connexion';
+            }
+        }
+    });
+    
+    // Gestion normale de l'authentification
     onAuthStateChanged(auth, (user) => {
         if (user) {
             if(!user.emailVerified){
@@ -36,4 +49,3 @@ export function initializeAuthManager() {
         });
     }
 }
-

@@ -33,9 +33,9 @@ export function initializeLogin() {
                 const user = userCredential.user;
 
                 if (!user.emailVerified) {
-                    showError('Veuillez vérifier votre email avant de vous connecter.<br>Un nouvel email de vérification va vous être envoyé.');
-                    await sendEmailVerification(user);
                     await auth.signOut();
+                    await sendEmailVerification(user);
+                    showError('Veuillez vérifier votre email avant de vous connecter.<br>Un nouvel email de vérification va vous être envoyé.');
                     return;
                 }
                 
@@ -54,7 +54,7 @@ export function initializeLogin() {
             e.preventDefault();
             e.stopPropagation();
 
-            const email = document.getElementById('email').value;
+            const email = sanitizeInput(document.getElementById('email').value);
             
             if (!email) {
                 showError('Veuillez entrer votre email');
