@@ -57,6 +57,16 @@ export function getFirebaseErrorMessage(error) {
             return 'Email ou mot de passe incorrect.';
         case 'auth/too-many-requests':
                 return 'Trop de tentatives de connexion échouées.<br>Veuillez réessayer plus tard.';  
+
+        // Messages d'erreur pour la réinitialisation de mot de passe
+        case 'auth/user-not-found':
+            return 'Aucun compte associé à cet email.';
+        case 'auth/invalid-email':
+            return 'Adresse email invalide.';
+
+        // Messages d'erreur pour la vérification de mail
+        case 'auth/email-not-verified':
+            return 'Veuillez vérifier votre email pour continuer.';
             
         default:
             return 'Une erreur s\'est produite.';

@@ -8,9 +8,12 @@ export function initializeAuthManager() {
     // Gestion de l'authentification
     onAuthStateChanged(auth, (user) => {
         if (user) {
+            if(!user.emailVerified){
+                signOut(auth);
+                return;
+            }
             if (document.getElementById('userEmail')) {
                 document.getElementById('userEmail').textContent = user.email;
-                document.getElementById('userId').textContent = user.uid;
             }
         } else {
             window.location.href = '/connexion';
@@ -33,3 +36,4 @@ export function initializeAuthManager() {
         });
     }
 }
+

@@ -8,7 +8,7 @@ export async function POST({ request }) {
             `INSERT INTO utilisateur (
                 id_utilisateur,
                 pseudo_utilisateur,
-                avatar_utilisateur,
+                avatar_utilisateur,  // Stocker l'ID, pas le chemin
                 titre_utilisateur,
                 xp_utilisateur,
                 lvl_utilisateur,
@@ -17,11 +17,11 @@ export async function POST({ request }) {
             [
                 uid,
                 pseudo,
-                'default_avatar.png', // Avatar par défaut
-                'Débutant',           // Titre par défaut
-                0,                    // XP initial
-                1,                    // Niveau initial
-                0                     // Monnaie initiale
+                0,  
+                0, 
+                0,                    
+                1,                    
+                0                    
             ]
         );
         

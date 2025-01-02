@@ -1,5 +1,5 @@
 import { auth } from '../firebase/firebaseConfig';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { showError, showSuccess, clearMessage, getFirebaseErrorMessage, getPasswordErrorMessages } from './messages';
 import { sanitizeInput } from './sanitizeInput';
 
@@ -27,6 +27,9 @@ async function registerUser(email, password, pseudo) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         firebaseUser = userCredential.user;
 
+        //Envoie de l'email de vérification
+        await sendEmailVerification(firebaseUser);
+        
         // Ajout dans la base de données SQL
         try {
             await addUserToDatabase(firebaseUser.uid, email, pseudo);
@@ -60,14 +63,6 @@ export function initializeRegister() {
             const passwordConfirmation = sanitizeInput(document.getElementById('password-confirmation').value);
             const pseudo = sanitizeInput(document.getElementById('pseudo').value);
             const droit = sanitizeInput(document.getElementById('droit').checked);
-
-            console.log({
-                email,
-                password,
-                passwordConfirmation,
-                pseudo,
-                droit
-            });
 
             // Validations
             if (!pseudo || pseudo.length < 3) {

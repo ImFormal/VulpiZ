@@ -5,7 +5,7 @@ const defaultUserData = {
     monnaie_utilisateur: 0,
     lvl_utilisateur: 1,
     xp_utilisateur: 0,
-    url_avatar: '/src/assets/default.png',
+    url: './src/assets/avatars/default.png',
     nom_titre: 'Renardo'
 };
 
@@ -41,36 +41,43 @@ function updateSpecificUI(key, value) {
     switch(key) {
         case 'pseudo_utilisateur':
             document.querySelectorAll('.pseudo').forEach(element => {
-                if (element) element.textContent = value;
+                if (element) element.textContent = value || defaultUserData.pseudo_utilisateur;
             });
             break;
-        case 'nom_titre':
+ 
+        case 'titre_utilisateur':
             document.querySelectorAll('.titre').forEach(element => {
-                if (element) element.textContent = `[${value}]`;
+                if (element) element.textContent = `[${value || defaultUserData.nom_titre}]`;
             });
             break;
+ 
         case 'monnaie_utilisateur':
             document.querySelectorAll('.currency-amount').forEach(element => {
-                if (element) element.textContent = `Monnaie : ${value.toLocaleString()} credits`;
+                if (element) element.textContent = `Monnaie : ${(value || defaultUserData.monnaie_utilisateur).toLocaleString()} credits`;
             });
             break;
+ 
         case 'lvl_utilisateur':
         case 'xp_utilisateur':
-            // Mettre à jour le niveau et l'XP ensemble car ils sont liés
             document.querySelectorAll('.level-text').forEach(element => {
-                if (element) element.textContent = `Level ${currentUserData.lvl_utilisateur} (${currentUserData.xp_utilisateur.toLocaleString()} / 1000 xp)`;
+                if (element) element.textContent = `Level ${currentUserData.lvl_utilisateur || defaultUserData.lvl_utilisateur} (${(currentUserData.xp_utilisateur || defaultUserData.xp_utilisateur).toLocaleString()} / 1000 xp)`;
             });
             document.querySelectorAll('.progress').forEach(element => {
-                if (element) element.style.width = `${(currentUserData.xp_utilisateur / 1000) * 100}%`;
+                if (element) element.style.width = `${((currentUserData.xp_utilisateur || defaultUserData.xp_utilisateur) / 1000) * 100}%`;
             });
             break;
-        case 'url':
+ 
+        case 'url': 
             document.querySelectorAll('.profile-image').forEach(element => {
-                if (element) element.src = value;
+                if (element && value) { 
+                    element.src = value;
+                } else if (element) {
+                    element.src = defaultUserData.url;
+                }
             });
             break;
     }
-}
+ }
 
 export function initializeProfile() {
     const profileContent = document.querySelector('.profile-container');
@@ -93,7 +100,7 @@ export function initializeProfile() {
                 updateProfileUI(currentUserData);
 
                 // Démarrer la vérification des mises à jour
-                //setInterval(() => checkForUpdates(user.uid), 1000);
+                setInterval(() => checkForUpdates(user.uid), 1000);
             } catch (error) {
                 console.error('Erreur:', error);
             }
@@ -145,6 +152,6 @@ function updateProfileUI(userData) {
     });
  
     elements.avatar.forEach(element => {
-        if (element && userData.url) element.src = userData.url;
+        if (element) element.src = userData.url || defaultUserData.url;
     });
  }
