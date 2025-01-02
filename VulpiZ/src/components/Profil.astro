@@ -1,15 +1,8 @@
 ---
 import '../styles/profil.css';
+import { getDefaultUserData } from '../js/profileData';
 
-// Valeurs par défaut initiales
-const userData = {
-    pseudo_utilisateur: 'undefined',
-    titre_utilisateur: 'Renardo',
-    monnaie_utilisateur: 0,
-    lvl_utilisateur: 1,
-    xp_utilisateur: 0,
-    avatar_utilisateur: 'default.png'
-};
+const userData = getDefaultUserData();
 const maxXp = 1000;
 const profileUrl = "/pageProfil";
 ---
@@ -17,7 +10,7 @@ const profileUrl = "/pageProfil";
 <div class="profile-container">
     <div class="profile-info">
         <div>
-            <span class="titre">[{userData.titre_utilisateur}]</span>
+            <span class="titre">[{userData.nom_titre}]</span>
             <span class="pseudo">{userData.pseudo_utilisateur}</span>
         </div>
         <div class="currency">
@@ -31,7 +24,7 @@ const profileUrl = "/pageProfil";
         </div>
     </div>
     <a href={profileUrl} class="profile-image-link">
-        <img src={`/avatars/${userData.avatar_utilisateur}`} alt="Photo de profil" class="profile-image" />
+        <img src={`${userData.url}`} alt="Photo de profil" class="profile-image" />
     </a>
 </div>
 <script src="../js/profileData.js"></script>

@@ -6,7 +6,11 @@ export async function GET({ request }) {
 
     try {
         const [rows] = await pool.execute(
-            'SELECT * FROM utilisateur WHERE id_utilisateur = ?',
+            `SELECT u.*, a.url, t.nom_titre
+            FROM utilisateur u 
+            LEFT JOIN avatar a ON u.avatar_utilisateur = a.id_avatar
+            LEFT JOIN titre t ON u.titre_utilisateur = t.id_titre
+            WHERE id_utilisateur = ?`,
             [uid]
         );
         

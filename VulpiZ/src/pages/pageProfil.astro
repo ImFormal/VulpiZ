@@ -1,12 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getDefaultUserData } from '../js/profileData';
 
+const userData = getDefaultUserData();
 const pageTitle = "Mon Profil | VulpiZ";
 ---
 
 <Layout pageTitle={pageTitle}>
-	<div class = "content">
-		<h1>Bienvenue sur ton profil</h1>
-		<p>Vous êtes connecté en tant qu'utilisateur.</p>
-	</div>
+    <div class="content">
+        <h1>Bienvenue sur ton profil <span class="pseudo">{userData.pseudo_utilisateur}</span></h1>
+        <p>Vous êtes connecté en tant qu'utilisateur.</p>
+        <p>Email: <span id="userEmail"></span></p>
+        <p>Titre : <span class="titre">[{userData.nom_titre}]</span></p>
+        <p>Niveau : <span class="level-text">Level {userData.lvl_utilisateur}</span></p>
+        <p>Monnaie : <span class="currency-amount">{userData.monnaie_utilisateur}</span></p>
+        <a href="#" id="logout">Déconnexion</a>
+    </div>
 </Layout>
+<script src="../js/profileData.js"></script>
