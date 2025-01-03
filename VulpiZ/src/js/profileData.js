@@ -53,7 +53,10 @@ function updateSpecificUI(key, value) {
  
         case 'monnaie_utilisateur':
             document.querySelectorAll('.currency-amount').forEach(element => {
-                if (element) element.textContent = `Monnaie : ${(value || defaultUserData.monnaie_utilisateur).toLocaleString()} credits`;
+                if (element) {
+                    const montant = value || defaultUserData.monnaie_utilisateur;
+                    element.textContent = `Monnaie : ${formatNumber(montant)} credits`;
+                }
             });
             break;
  
@@ -140,7 +143,10 @@ function updateProfileUI(userData) {
     });
  
     elements.monnaie.forEach(element => {
-        if (element) element.textContent = `Monnaie : ${userData.monnaie_utilisateur.toLocaleString()} credits`;
+        if (element) {
+            const montant = userData.monnaie_utilisateur || defaultUserData.monnaie_utilisateur;
+            element.textContent = `Monnaie : ${formatNumber(montant)} credits`;
+        }
     });
  
     elements.level.forEach(element => {
@@ -154,4 +160,15 @@ function updateProfileUI(userData) {
     elements.avatar.forEach(element => {
         if (element) element.src = userData.url || defaultUserData.url;
     });
+ }
+
+ function formatNumber(number) {
+    if (number >= 1000000000) {
+        return (number / 1000000000).toFixed(1) + 'B';
+    } else if (number >= 1000000) {
+        return (number / 1000000).toFixed(1) + 'M';
+    } else if (number >= 1000) {
+        return (number / 1000).toFixed(1) + 'k';
+    }
+    return number.toString();
  }
