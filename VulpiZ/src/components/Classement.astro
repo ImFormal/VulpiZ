@@ -1,0 +1,29 @@
+---
+import '../styles/classements.css';
+
+const { title, sortBy } = Astro.props;
+---
+
+    <div class="content">
+        <div class="leaderboard-card">
+            <h1>{title}</h1>
+            <div class="separator"></div>
+
+            <div class="leaderboard">
+                <div class="header">
+                    <span>#</span>
+                    <span>Pseudo</span>
+                    <span>{sortBy}</span>
+                </div>
+                <div class="leaderboard-container"></div>
+            </div>
+
+            <h2>Votre position :</h2>
+            <div class="current-user-container"></div>
+        </div>
+    </div>
+
+<script>
+    import { initializeLeaderboard } from '../js/leaderboard';
+    initializeLeaderboard();
+</script>

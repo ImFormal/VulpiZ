@@ -63,10 +63,16 @@ function updateSpecificUI(key, value) {
         case 'lvl_utilisateur':
         case 'xp_utilisateur':
             document.querySelectorAll('.level-text').forEach(element => {
-                if (element) element.textContent = `Level ${currentUserData.lvl_utilisateur || defaultUserData.lvl_utilisateur} (${(currentUserData.xp_utilisateur || defaultUserData.xp_utilisateur).toLocaleString()} / 1000 xp)`;
+                if (element) {
+                    const displayedXp = currentUserData.xp_utilisateur % 1000;
+                    element.textContent = `Level ${currentUserData.lvl_utilisateur || defaultUserData.lvl_utilisateur} (${displayedXp.toLocaleString()} / 1000 xp)`;
+                }
             });
             document.querySelectorAll('.progress').forEach(element => {
-                if (element) element.style.width = `${((currentUserData.xp_utilisateur || defaultUserData.xp_utilisateur) / 1000) * 100}%`;
+                if (element) {
+                    const displayedXp = currentUserData.xp_utilisateur % 1000;
+                    element.style.width = `${(displayedXp / 1000) * 100}%`;
+                }
             });
             break;
  
@@ -150,11 +156,17 @@ function updateProfileUI(userData) {
     });
  
     elements.level.forEach(element => {
-        if (element) element.textContent = `Level ${userData.lvl_utilisateur} (${userData.xp_utilisateur.toLocaleString()} / 1000 xp)`;
+        if (element) {
+            const displayedXp = userData.xp_utilisateur % 1000;
+            element.textContent = `Level ${userData.lvl_utilisateur} (${displayedXp.toLocaleString()} / 1000 xp)`;
+        }
     });
  
     elements.progress.forEach(element => {
-        if (element) element.style.width = `${(userData.xp_utilisateur / 1000) * 100}%`;
+        if (element) {
+            const displayedXp = userData.xp_utilisateur % 1000;
+            element.style.width = `${(displayedXp / 1000) * 100}%`;
+        }
     });
  
     elements.avatar.forEach(element => {

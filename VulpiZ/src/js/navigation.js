@@ -3,6 +3,7 @@ import { initializeRegister } from './register.js';
 import { initializeLogin } from './login.js';
 import { initializeAuthManager } from './AuthManager.js';
 import { initializeProfile } from './profileData.js';
+import { initializeLeaderboard } from './leaderboard.js';
 
 document.addEventListener('click', async (event) => {
     const link = event.target.closest('a[href]');
@@ -113,6 +114,8 @@ function initializePage() {
         initializeRegister();
     } else if (path === '/connexion') {
         initializeLogin();
+    } else if (path === '/classements') {
+        initializeLeaderboard();
     }
 }
 

@@ -1,12 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Classement from "../components/Classement.astro";
+import { auth } from '../firebase/firebaseConfig';
+import '../styles/classements.css';
 
+const userId = auth.currentUser?.uid ?? null;
 const pageTitle = "Classements | VulpiZ";
 ---
 
 <Layout pageTitle={pageTitle}>
-	<div class = "content">
-		<h1>Bienvenue sur les classements</h1>
-		<p>Vous êtes connecté en tant qu'utilisateur.</p>
+    <div class="content">
+		<div class="classements">
+        	<Classement 
+            	title="Expériences" 
+            	sortBy="Niveau" 
+            	userId={userId} 
+        	/>
+        	<Classement 
+            	title="Bonnes Réponses" 
+            	sortBy="✓" 
+            	userId={userId} 
+        	/>
+    	</div>
 	</div>
 </Layout>

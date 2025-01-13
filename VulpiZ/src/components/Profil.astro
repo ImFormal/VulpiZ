@@ -5,6 +5,9 @@ import { getDefaultUserData } from '../js/profileData';
 const userData = getDefaultUserData();
 const maxXp = 1000;
 const profileUrl = "/pageProfil";
+
+const displayedXp = userData.xp_utilisateur % maxXp;
+const progressPercentage = (displayedXp / maxXp) * 100;
 ---
 
 <div class="profile-container">
@@ -17,9 +20,9 @@ const profileUrl = "/pageProfil";
             <span class="currency-amount">Monnaie : {userData.monnaie_utilisateur.toLocaleString()} credits</span>
         </div>
         <div class="level-progress">
-            <div class="level-text">Level {userData.lvl_utilisateur} ({userData.xp_utilisateur.toLocaleString()} / {maxXp.toLocaleString()} xp)</div>
+            <div class="level-text">Level {userData.lvl_utilisateur} ({displayedXp.toLocaleString()} / {maxXp.toLocaleString()} xp)</div>
             <div class="progress-bar">
-                <div class="progress" style={`width: ${(userData.xp_utilisateur / maxXp) * 100}%;`}></div>
+                <div class="progress" style={`width: ${progressPercentage}%;`}></div>
             </div>
         </div>
     </div>

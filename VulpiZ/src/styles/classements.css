@@ -1,0 +1,140 @@
+.classements {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+}
+
+.leaderboard-card {
+    background-color: var(--ft-second);
+    border-radius: 30px;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+                4px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    width: 500px; 
+}
+
+h1 {
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.separator {
+    height: 2px;
+    background: var(--orange);
+    width: 150px;
+    margin: 0 auto 2rem;
+    border-radius: 1px;
+}
+
+.leaderboard {
+    background: var(--orange);
+    border-radius: 10px;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+                4px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    padding: 1rem;
+    margin-bottom: 2rem;
+ }
+
+.header {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px; /* Mêmes colonnes que leaderboard-row */
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+}
+ 
+ .header span:first-child {
+    text-align: left;
+ }
+ 
+ .header span:nth-child(2) {
+    text-align: left;
+ }
+ 
+ .header span:last-child {
+    text-align: right;
+ }
+ 
+ .leaderboard-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px;
+    padding: 0.5rem;
+    font-size: 17px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+    align-items: center;
+ }
+ 
+ .leaderboard-row .rank {
+    text-align: left;
+ }
+ 
+ .leaderboard-row {
+    text-align: right;
+ }
+
+ .level {
+    text-align: right;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    overflow: hidden; /* Cache le débordement */
+    text-overflow: ellipsis; /* Ajoute ... si trop long */
+}
+ 
+ .is-current-user {
+    font-weight: bold;
+ }
+
+.leaderboard-row:nth-child(even) {
+    background: var(--orange2);
+    border-radius: 10px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start; /* Aligné à gauche */
+ }
+
+.avatar {
+    width: 30px;
+    height: 30px;
+}
+
+h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 2rem 0 1rem;
+}
+
+.current-user-container {
+    background: var(--orange);
+    border-radius: 10px;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+                4px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 20px; /* Padding horizontal de 20px */
+    width: 95%; 
+    margin: 0 auto; /* Centrer le container */
+ }
+ 
+ .current-user-container .leaderboard-row {
+    padding: 0;
+ }
+
+/* Ajustements responsifs */
+@media (max-width: 900px) {
+    .classements {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .leaderboard-card {
+        width: 100%;
+    }
+}
