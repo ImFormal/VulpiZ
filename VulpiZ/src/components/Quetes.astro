@@ -1,0 +1,48 @@
+---
+import { pool } from '../db/databaseConfig';
+import { auth } from '../firebase/firebaseConfig';
+
+const { mode } = Astro.props;
+const userId = auth.currentUser?.uid || null; // Utiliser null si uid n'existe pas
+
+let quetes = [];
+try {
+    const [rows] = await pool.execute(`
+        SELECT q.*, r.nom_recompense, COALESCE(c.avancement_quete, 0) as avancement_quete
+        FROM quete q
+        JOIN recompense r ON q.id_recompense = r.id_recompense
+        JOIN type_quete tq ON q.id_type_quete = tq.id_type_quete
+        LEFT JOIN completer c ON q.id_quete = c.id_quete AND c.id_utilisateur = ?
+        WHERE tq.type_quete = ? AND q.actif = 1
+    `, [userId, mode]);
+
+    quetes = rows;
+} catch (error) {
+    console.error('Erreur lors de la récupération des quêtes:', error);
+}
+---
+
+{quetes.map(quete => (
+    <div class={`quete ${quete.avancement_quete >= quete.nb_requis ? 'completed' : ''}`}>
+        <h3>{quete.titre_quete}</h3>
+        <p>({quete.avancement_quete}/{quete.nb_requis})</p>
+        <p>Récompense : {quete.nom_recompense}</p>
+    </div>
+))}
+
+<style>
+    .quete {
+        background: var(--orange);
+        border-radius: 10px;
+        box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+                    4px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .completed {
+        background: var(--orange2);
+    }
+</style>

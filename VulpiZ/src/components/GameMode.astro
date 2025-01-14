@@ -1,0 +1,91 @@
+---
+interface Props {
+   mode: 'solo' | 'aventure' | 'revision';
+}
+
+const { mode } = Astro.props;
+
+const playLink = mode === 'solo' ? '/jeu-solo' : 
+               mode === 'aventure' ? '/jeu-aventure' : 
+               '/mode-revision';
+
+const leftArrowLink = mode === 'solo' ? '/revision' : 
+                    mode === 'aventure' ? '/index' : 
+                    '/aventure';
+
+const rightArrowLink = mode === 'solo' ? '/aventure' : 
+                     mode === 'aventure' ? '/revision' : 
+                     '/index';
+---
+
+<div class="mode-container">
+   <div class="mode">
+       <a href={leftArrowLink} class="arrow left">←</a>
+       <div class="mode-display">
+           <img src="/images/mode-bg.jpg" alt="Background">
+           <h2>{mode.toUpperCase()}</h2>
+       </div>
+       <a href={rightArrowLink} class="arrow right">→</a>
+   </div>
+
+   <a href={playLink} class="play-button">JOUER</a>
+   <button class="propose-button">PROPOSER UNE QUESTION</button>
+</div>
+
+<style>
+   .mode-container {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 2rem;
+   }
+
+   .mode {
+       display: flex;
+       align-items: center;
+       gap: 2rem;
+   }
+
+   .arrow {
+       background: var(--orange);
+       box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.25),
+                   2px 2px 4px rgba(0, 0, 0, 1);
+       padding: 1rem;
+       text-decoration: none;
+       color: white;
+   }
+
+   .mode-display {
+       position: relative;
+   }
+
+   .mode-display img {
+       width: 100%;
+       height: auto;
+   }
+
+   .mode-display h2 {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       font-size: 64px;
+       color: white;
+       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+   }
+
+   .play-button, .propose-button {
+       background: var(--orange);
+       border-radius: 10px;
+       padding: 1rem 2rem;
+       color: white;
+       text-decoration: none;
+       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+       border: none;
+       cursor: pointer;
+   }
+
+   .propose-button {
+       background: var(--ft-second);
+   }
+</style>

@@ -1,0 +1,45 @@
+---
+import PatchNotes from './PatchNotes.astro';
+import Quetes from './Quetes.astro';
+import GameMode from './GameMode.astro';
+
+interface Props {
+    type: 'patch_notes' | 'quetes';
+    mode: 'solo' | 'aventure' | 'revision';
+}
+
+const { type, mode } = Astro.props;
+---
+
+<div class="tableau">
+    <h1>{type === 'patch_notes' ? 'Patch Notes' : 'Quêtes ' + mode}</h1>
+    <div class="separator"></div>
+    
+    {type === 'patch_notes' ? 
+        <PatchNotes mode={mode} /> : 
+        <Quetes mode={mode} />
+    }
+</div>
+
+<style>
+    .tableau {
+        background: var(--ft-second);
+        border-radius: 30px;
+        box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+                    4px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 2rem;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+
+    .separator {
+        height: 2px;
+        background: var(--orange);
+        width: 150px;
+        margin: 1rem auto;
+        border-radius: 1px;
+    }
+</style>
