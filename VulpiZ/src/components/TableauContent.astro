@@ -5,7 +5,7 @@ import GameMode from './GameMode.astro';
 
 interface Props {
     type: 'patch_notes' | 'quetes';
-    mode: 'solo' | 'aventure' | 'revision';
+    mode: 'Solo' | 'Aventure' | 'Révision';
 }
 
 const { type, mode } = Astro.props;
@@ -27,19 +27,20 @@ const { type, mode } = Astro.props;
         border-radius: 30px;
         box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
                     4px 4px 4px rgba(0, 0, 0, 0.25);
-        padding: 2rem;
+        padding: 0.5rem 2rem 1rem 2rem;
     }
 
     h1 {
         text-align: center;
         color: white;
+        margin-bottom: 10px;
     }
 
     .separator {
         height: 2px;
         background: var(--orange);
-        width: 150px;
-        margin: 1rem auto;
-        border-radius: 1px;
+        width: 100px;
+        margin: 0 auto 2rem auto;
+        border-radius: 50px;
     }
 </style>

@@ -1,0 +1,73 @@
+.mode-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mode {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.arrow {
+    --r: 6px;
+    width: 150px;
+    aspect-ratio: 1/cos(30deg);
+    --_g:calc(tan(60deg)*var(--r)) bottom var(--r),#000 98%,#0000 101%;
+    -webkit-mask:
+      conic-gradient(from -30deg at 50% calc(200% - 3*var(--r)/2),#000 60deg,#0000 0)
+       0 100%/100% calc(100% - 3*var(--r)/2) no-repeat,
+      radial-gradient(var(--r) at 50% calc(2*var(--r)),#000 98%,#0000 101%),
+      radial-gradient(var(--r) at left  var(--_g)),
+      radial-gradient(var(--r) at right var(--_g));
+    clip-path: polygon(50% 0,100% 100%,0 100%);
+    cursor: pointer;
+    background: var(--orange);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.25),
+                2px 2px 4px rgba(0, 0, 0, 1);
+    color: white;
+}
+
+.left {
+    transform: rotate(-90deg);
+}
+
+.right {
+    transform: rotate(90deg);
+}
+
+.mode-display {
+    position: relative;
+}
+
+.mode-display img {
+    width: 100%;
+    height: auto;
+}
+
+.mode-display h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    color: white;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.play-button, .propose-button {
+    background: var(--orange);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    cursor: pointer;
+}
+
+.propose-button {
+    background: var(--ft-second);
+}
