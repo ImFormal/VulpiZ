@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import TableauContent from '../components/TableauContent.astro';
 import GameMode from '../components/GameMode.astro';
+import '../styles/mode.css';
 
 const pageTitle = "Révision | VulpiZ";
 ---
@@ -13,12 +14,3 @@ const pageTitle = "Révision | VulpiZ";
         <TableauContent type="quetes" mode="Révision" />
     </div>
 </Layout>
-
-<style>
-    .content {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        gap: 2rem;
-        padding: 2rem;
-    }
-</style>

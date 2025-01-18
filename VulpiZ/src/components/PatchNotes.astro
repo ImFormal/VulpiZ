@@ -1,5 +1,6 @@
 ---
 import { pool } from '../db/databaseConfig';
+import '../styles/patchnotes.css';
 
 const { mode } = Astro.props;
 
@@ -20,26 +21,3 @@ const [patches] = await pool.execute(`
         <div class="separator"></div>
     </div>
 ))}
-
-<style>
-    .patch {
-        display: flex;
-        flex-direction: column;
-    }
-
-    p {
-        margin: 0 0 10px 0;
-    }
-
-    .date {
-        font-weight: bold;
-    }
-
-    .separator {
-        height: 2px;
-        background: var(--orange);
-        width: 75px;
-        margin-bottom: 1rem;
-        border-radius: 50px;
-    }
-</style>

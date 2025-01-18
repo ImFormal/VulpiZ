@@ -2,13 +2,22 @@ body {
     overflow-x: hidden;
 }
 
+body.animating {
+    overflow-x: hidden;
+    width: 100%;
+    position: fixed;
+}
+
+body.animating #page-content {
+    max-width: 100vw;
+}
+
 .page-content {
     position: relative;
     width: 100%;
     overflow-x: hidden;
 }
 
-/* Animations pour la navigation */
 .slide-left-exit {
     animation: slideLeftExit 0.5s ease-in-out forwards;
 }

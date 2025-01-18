@@ -1,6 +1,7 @@
 ---
 import { pool } from '../db/databaseConfig';
 import { auth } from '../firebase/firebaseConfig';
+import '../styles/quetes.css';
 
 const { mode } = Astro.props;
 const userId = auth.currentUser?.uid || null; // Utiliser null si uid n'existe pas
@@ -29,20 +30,3 @@ try {
         <p>Récompense : {quete.nom_recompense}</p>
     </div>
 ))}
-
-<style>
-    .quete {
-        background: var(--orange);
-        border-radius: 10px;
-        box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25),
-                    4px 4px 4px rgba(0, 0, 0, 0.25);
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .completed {
-        background: var(--orange2);
-    }
-</style>

@@ -54,6 +54,8 @@ document.addEventListener('click', async (event) => {
 
     try {
         const currentContent = document.querySelector('#page-content');
+        // Ajout d'une classe pour maintenir l'overflow hidden pendant l'animation
+        document.body.classList.add('animating');
         
         if (isArrowNav) {
             const exitDirection = link.classList.contains('left') ? 'left' : 'right';
@@ -70,7 +72,6 @@ document.addEventListener('click', async (event) => {
 
         window.history.pushState({}, '', url);
 
-        // Mise à jour du titre depuis le nouveau document
         updatePageTitleFromDocument(newDocument);
 
         const newContent = newDocument.querySelector('#page-content');
@@ -88,6 +89,8 @@ document.addEventListener('click', async (event) => {
                         'slide-left-enter', 
                         'slide-right-enter'
                     );
+                    // Retirer la classe une fois l'animation terminée
+                    document.body.classList.remove('animating');
                 }, 500);
             }
 
@@ -98,6 +101,8 @@ document.addEventListener('click', async (event) => {
         updateActiveLinks();
         window.scrollTo(0, 0);
     } catch (error) {
+        // Ne pas oublier de retirer la classe en cas d'erreur
+        document.body.classList.remove('animating');
         console.error('Erreur lors du chargement de la page:', error);
     }
 });
