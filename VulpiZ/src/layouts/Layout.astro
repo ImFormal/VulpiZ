@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/suggestion.css';
 
 const { pageTitle } = Astro.props;
 ---
@@ -31,5 +32,6 @@ if (!isset($_SESSION['user_id'])) {
     <Footer />
     <script src="../js/navigation.js"></script>
     <script src="../js/AuthManager.js"></script>
+    <script src="../js/suggestion.js"></script>
   </body>
 </html>

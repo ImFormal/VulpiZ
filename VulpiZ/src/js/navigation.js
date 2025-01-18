@@ -4,6 +4,7 @@ import { initializeLogin } from './login.js';
 import { initializeAuthManager } from './AuthManager.js';
 import { initializeProfile } from './profileData.js';
 import { initializeLeaderboard } from './leaderboard.js';
+import { openMainPopup } from './suggestion.js';
 
 async function showLoadingScreen() {
     const loadingScreen = document.createElement('div');
@@ -180,6 +181,11 @@ function initializePage() {
         initializeLogin();
     } else if (path === '/classements') {
         initializeLeaderboard();
+    }
+
+    const proposeButton = document.querySelector('.propose-button');
+    if (proposeButton) {
+        proposeButton.addEventListener('click', openMainPopup);
     }
 }
 
